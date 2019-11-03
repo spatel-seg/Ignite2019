@@ -39,6 +39,14 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)\deploy'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\deploy'
+
+
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)'
@@ -47,6 +55,8 @@ steps:
 
     flattenFolders: true
     
+
+
 
 
 - task: PublishBuildArtifacts@1
